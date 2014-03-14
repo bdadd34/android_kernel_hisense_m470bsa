@@ -68,9 +68,11 @@ static unsigned int active_count;
 static unsigned long go_maxspeed_load;
 
 /* Base of exponential raise to max speed; if 0 - jump to maximum */
+#define DEFAULT_BOOST_FACTOR 0
 static unsigned long boost_factor;
 
 /* Max frequency boost in Hz; if 0 - no max is enforced */
+#define DEFAULT_MAX_BOOST 0
 static unsigned long max_boost;
 
 /* Consider IO as busy */
@@ -80,18 +82,19 @@ static unsigned long io_is_busy;
  * Targeted sustainable load relatively to current frequency.
  * If 0, target is set realtively to the max speed
  */
+#define DEFAULT_SUSTAIN_LOAD 0
 static unsigned long sustain_load;
 
 /*
  * The minimum amount of time to spend at a frequency before we can ramp down.
  */
-#define DEFAULT_MIN_SAMPLE_TIME 30000;
+#define DEFAULT_MIN_SAMPLE_TIME 25000;
 static unsigned long min_sample_time;
 
 /*
  * The sample rate of the timer used to increase frequency
  */
-#define DEFAULT_TIMER_RATE 20000;
+#define DEFAULT_TIMER_RATE 17500;
 static unsigned long timer_rate;
 
 /*
@@ -128,7 +131,7 @@ static
 struct cpufreq_governor cpufreq_gov_interactive = {
 	.name = "interactive",
 	.governor = cpufreq_governor_interactive,
-	.max_transition_latency = 9000000,
+	.max_transition_latency = 10000000,
 	.owner = THIS_MODULE,
 };
 
