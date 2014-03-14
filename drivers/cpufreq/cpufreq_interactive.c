@@ -64,7 +64,7 @@ static struct kobject *interactive_kobj;
 static unsigned int active_count;
 
 /* Go to max speed when CPU load at or above this value. */
-#define DEFAULT_GO_MAXSPEED_LOAD 85
+#define DEFAULT_GO_MAXSPEED_LOAD 80
 static unsigned long go_maxspeed_load;
 
 /* Base of exponential raise to max speed; if 0 - jump to maximum */
@@ -113,7 +113,7 @@ static unsigned long max_normal_freq;
 
 
 /* Defines to control mid-range frequencies */
-#define DEFAULT_MID_RANGE_GO_MAXSPEED_LOAD 95
+#define DEFAULT_MID_RANGE_GO_MAXSPEED_LOAD 85
 
 static unsigned long midrange_freq;
 static unsigned long midrange_go_maxspeed_load;
@@ -128,7 +128,7 @@ static
 struct cpufreq_governor cpufreq_gov_interactive = {
 	.name = "interactive",
 	.governor = cpufreq_governor_interactive,
-	.max_transition_latency = 10000000,
+	.max_transition_latency = 9000000,
 	.owner = THIS_MODULE,
 };
 
